@@ -158,15 +158,6 @@ a.secondary {
     align-items: center;
     justify-content: center;
   }
-
-  .navbutton {
-    size: 50px;
-  }
-
-  .navbar {
-    flex-direction: row;
-    justify-content: center;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
