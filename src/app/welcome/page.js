@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const WelcomeWrapper =styled.div`
+const WelcomeWrapper = styled.div`
 width: 100%;
 height: 100%;
 background-color: #1c1c27ff;
@@ -10,12 +10,12 @@ outline: solid;
 padding: 20px;
 `
 
-function About() {
+function Welcome() {
   return (
     <WelcomeWrapper>
-    <div>Welcome!</div>
+    <div>Welcome to my website!</div>
     </WelcomeWrapper>
   );
 }
 
-export default About;
+export default Welcome;
