@@ -16,7 +16,7 @@ const NavWrapper = styled.div`
   outline-offset: 4px;
   outline-width: 2px;
   border-radius: 32px;
-
+  position: fixed;
 `
 
 const NavButton = styled(Link)`
