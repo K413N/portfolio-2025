@@ -77,8 +77,8 @@ function Welcome() {
             I remember they were telling me to learn C++ at the time, However we did not 
             have the resources we have today. So I picked up 'C++ for dummies'
             and 12 year old me really did feel like a dummy trying to memorize that brick of a book. 
-            Teachers caught wind of this and set me up with a game dev bootcamp at a BCIT summer camp in grade 7 using C#.
-            I've been hooked ever since!            
+            Teachers caught wind of this and set me up with a game dev bootcamp at a BCIT summer camp in grade 7 using C# 
+            and I've been hooked ever since!            
           </p>
           <SmallSpacer />
           <p>
