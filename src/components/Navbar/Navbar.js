@@ -3,20 +3,23 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-const NavWrapper = styled.div`
+const NavContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: stretch;
+  justify-content: center;
   flex-direction: row;
   background-color: #1a1b2bff;
-  padding: 12px;
+  padding: 6px;
   border-top-color: #ffffff;
   border-bottom-color: #1a1b2bff;
   outline: solid;
-  outline-offset: 4px;
   outline-width: 2px;
   border-radius: 32px;
-  position: fixed;
+`
+const NavWrapper = styled.div`
+position: fixed;
+bottom: 0;
+margin-bottom: 8px;
 `
 
 const NavButton = styled(Link)`
@@ -40,9 +43,11 @@ const NavButton = styled(Link)`
 function Navbar() {
   return (
     <NavWrapper>
-      <NavButton href="/" className="navbutton">Home</NavButton>
-      <NavButton href="/about" className="navbutton">About me</NavButton>
-      <NavButton href="/contact" className="navbutton">Contact me</NavButton>
+      <NavContainer>
+        <NavButton href="/" className="navbutton">Home</NavButton>
+        <NavButton href="/about" className="navbutton">About me</NavButton>
+        <NavButton href="/contact" className="navbutton">Contact me</NavButton>
+      </NavContainer>
     </NavWrapper>
   );
 }
