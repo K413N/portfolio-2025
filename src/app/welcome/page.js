@@ -2,7 +2,9 @@
 import React from "react";
 import styled from "styled-components";
 import BackgroundVideo from 'next-video/background-video';
-import bgvideo from '../../../videos/bgvideo.mp4';
+import bgvideo from '../../../assets/bgvideo.mp4';
+import bgimage from '../../../assets/cropped_photo.png';
+import Image from "next/image";
 import './bgvidstyles.css'
 
 const WelcomeWrapper = styled.div`
@@ -21,18 +23,23 @@ outline: solid;
 `
 
 const Overlay = styled.div`
+color: cyan;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 position: absolute;
 border-radius: 16px;
-padding: 6px;
-background-color: rgba(0,0,0,0.4);
+padding: 22px;
+background-color: rgba(0, 0, 0, 0.7);
+box-shadow:
+  6px 6px black,
+  -1em 0 1em black;
 `
 
 const Spacer = styled.div`
-height: 512px;
+height: 380px;
 `
 
 const SmallSpacer = styled.div`
@@ -40,17 +47,60 @@ height: 32px;
 `
 
 const Intro = styled.div`
-background-color: black;
+border-color: rgba(50, 50, 50, 0.5);
+border-style: solid;
+box-shadow:
+  6px 6px red,
+  -1em 0 0.7em gold;
+border-radius: 16px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
 text-align: center;
+padding: 36px;
 height: 100%;
-width: 70%;
+width: 600px;
+margin: 100px;
 `
 
+const HorizontalContainer = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+width: 100%;
+height: 100%;
+`
+const VerticalContainer = styled.div`
+display: flex;
+flex-direction: column;
+height: 100%;
+justify-content: space-between;
+`
+
+
+
+
 function Welcome() {
+  const [isShown, setIsShown] = React.useState(false);
+
+  const wrapperRef = React.useRef();
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+
+      console.log(entry.isIntersecting)
+      setIsShown(entry.isIntersecting);
+      
+    });
+
+    observer.observe(wrapperRef.current);
+  }, []);
+
+  const translateXFromLeft = isShown ? '0%' : '-500%';
+  const translateXFromRight = isShown ? '0%' : '500%';
   return (
     <WelcomeWrapper>
        <VidWrapper>
@@ -58,58 +108,49 @@ function Welcome() {
       </VidWrapper>
       <div className="content">
       <Overlay>
-      <h1>I'm Kalen</h1>
+      <h1>Hi I'm Kalen</h1>
       <p>Welcome to my website!</p>
       </Overlay>
       </div>
       <Spacer />
-        <Intro>
-          <h1>I'm a developer</h1>
+      <HorizontalContainer>
+        <Image src={bgimage} alt="Background Photo" style={{
+          transition: `transform 2000ms`,
+          transform: `translateX(${translateXFromLeft})`,
+        }}/>
+        <VerticalContainer ref={wrapperRef}>
+
+        <Intro style={{
+          transition: `transform 300ms`,
+          transform: `translateX(${translateXFromRight})`,
+        }}>
+          <h1>My introduction</h1>
           <SmallSpacer />
           <p>
-            I came from Vancouver BC, but I am currently looking for work in Montreal.
-            I've been working hard on sharpening my skills for quite some time now.
+            I'm a full stack web developer.
+            I came from Vancouver BC, but I am looking for work in Montreal Quebec.
+            I've been sharpening my skills for quite some time now, and did my first game dev bootcamp 
+            about 2 decades ago and haven't stopped learning since.
           </p>
           <SmallSpacer />
-          <p>
-            I got into programming at a very early age. I've always been fascinated 
-            by modding communities, and game developers. 
-            I remember they were telling me to learn C++ at the time, However we did not 
-            have the resources we have today. So I picked up 'C++ for dummies'
-            and 12 year old me really did feel like a dummy trying to memorize that brick of a book. 
-            Teachers caught wind of this and set me up with a game dev bootcamp at a BCIT summer camp in grade 7 using C# 
-            and I've been hooked ever since!            
-          </p>
-          <SmallSpacer />
-          <p>
-            I've done Khan Academy's intro JavaScript course immediately after I graduated back in 2013.
-            This gave me a very good foundation, and allowed me to follow 
-            tutorials in Unity3D using C# with ease. I found using JavaScript and C# interchangeably to be simple.
-          </p>
-          <SmallSpacer />
-          <p>
-            I made the switch to GodotEngine, and its my most favorite place to work out of by far.
-            Godot uses a language called GDScript which is identical to python, and I've become very profecient with it.
-            I have worked on many projects in this engine, and just released my first game for free on itch recently
-            called 'procedural nightmares' that is playable in your browser. You can play it right now!
-          </p>
-          <SmallSpacer />
-          <p>
-            I've taken 2 courses on React. One was a 12 week course at 
-            Concordia Bootcamps in 2022, which showed me how to build full stack applications using MongoDB, 
-            and the other was Josh W Comeau's 'Joy of React' which I just finished now in 2025.
-          </p>
-          <SmallSpacer />
-          <p>
-            I know without a doubt I wield the skills 
-            to begin work in this field.
-          </p>
-          <SmallSpacer />
-          <p>
-            Take a look at some of my projects, and don't hesitate to reach out. 
-            I'm here if you need help, are looking to hire, or just want to chat!
-          </p>
         </Intro>
+        <Intro style={{
+          transition: `transform 2600ms`,
+          transform: `translateX(${translateXFromRight})`,
+        }}>
+          <h1>A little bit about me</h1>
+          <SmallSpacer />
+          <p>
+            My strongest skill sets are React, JavaScript, and GDScript.
+            I am very passionate about my projects, and I love learning 
+            and collaborating with other devs to improve.
+            Take a look at some of my projects, and feel free to send me 
+            a message!
+          </p>
+          <SmallSpacer />
+        </Intro>
+        </VerticalContainer>
+      </HorizontalContainer>
         <Spacer />
     </WelcomeWrapper>
   );
