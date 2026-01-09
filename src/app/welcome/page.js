@@ -6,6 +6,8 @@ import bgvideo from '../../../assets/bgvideo.mp4';
 import bgimage from '../../../assets/cropped_photo.png';
 import Image from "next/image";
 import './bgvidstyles.css'
+import ContactComponent from "@/components/ContactComponent/ContactComponent";
+import Navbar from "@/components/Navbar";
 
 const WelcomeWrapper = styled.div`
 display: flex;
@@ -39,19 +41,20 @@ box-shadow:
 `
 
 const Spacer = styled.div`
-height: 380px;
+height: 220px;
 `
 
 const SmallSpacer = styled.div`
-height: 32px;
+height: 16px;
 `
 
 const Intro = styled.div`
+background-color: rgba(50, 50, 120, 0.8);
 border-color: rgba(50, 50, 50, 0.5);
 border-style: solid;
 box-shadow:
-  6px 6px red,
-  -1em 0 0.7em gold;
+  6px 6px blue,
+  -1em 0 0.7em black;
 border-radius: 16px;
 display: flex;
 flex-direction: column;
@@ -60,8 +63,8 @@ align-items: center;
 text-align: center;
 padding: 36px;
 height: 100%;
-width: 600px;
-margin: 100px;
+width: 450px;
+margin: 22px;
 `
 
 const HorizontalContainer = styled.div`
@@ -76,7 +79,18 @@ const VerticalContainer = styled.div`
 display: flex;
 flex-direction: column;
 height: 100%;
-justify-content: space-between;
+justify-content: center;
+align-items: center;
+`
+
+const ShadowedH = styled.h1`
+font-size: 28px;
+text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+`
+
+const ShadowedP = styled.p`
+text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+font-size: 16px;
 `
 
 
@@ -99,8 +113,8 @@ function Welcome() {
     observer.observe(wrapperRef.current);
   }, []);
 
-  const translateXFromLeft = isShown ? '0%' : '-500%';
-  const translateXFromRight = isShown ? '0%' : '500%';
+  const translateXFromLeft = isShown ? '35%' : '-500%';
+  const translateXFromRight = isShown ? '-35%' : '500%';
   return (
     <WelcomeWrapper>
        <VidWrapper>
@@ -108,7 +122,7 @@ function Welcome() {
       </VidWrapper>
       <div className="content">
       <Overlay>
-      <h1>Hi I'm Kalen</h1>
+      <ShadowedH>Hi I'm Kalen</ShadowedH>
       <p>Welcome to my website!</p>
       </Overlay>
       </div>
@@ -124,34 +138,38 @@ function Welcome() {
           transition: `transform 300ms`,
           transform: `translateX(${translateXFromRight})`,
         }}>
-          <h1>My introduction</h1>
+          <ShadowedH>My introduction</ShadowedH>
           <SmallSpacer />
-          <p>
-            I'm a full stack web developer.
-            I came from Vancouver BC, but I am looking for work in Montreal Quebec.
+          <ShadowedP>
+            I'm a full stack web, and game developer.
+            I came from Vancouver BC, and I am currently looking for work in Montreal Quebec.
             I've been sharpening my skills for quite some time now, and did my first game dev bootcamp 
-            about 2 decades ago and haven't stopped learning since.
-          </p>
+            about 2 decades ago and haven't stopped learning since! I've done various courses
+            like Khan academy's intro JavaScript course, 
+            Concordia Bootcamp's Full Stack Web Development Course,
+            Josh Comeau's Joy of React,
+            and have a ton of experience in Godot Engine.
+            I also use GNU/Linux as my main desktop.
+          </ShadowedP>
           <SmallSpacer />
         </Intro>
         <Intro style={{
           transition: `transform 2600ms`,
           transform: `translateX(${translateXFromRight})`,
         }}>
-          <h1>A little bit about me</h1>
+          <ShadowedH>In short...</ShadowedH>
           <SmallSpacer />
-          <p>
-            My strongest skill sets are React, JavaScript, and GDScript.
-            I am very passionate about my projects, and I love learning 
-            and collaborating with other devs to improve.
+          <ShadowedP>
+            My strongest skill sets are React, JavaScript, Python, and GDScript.
             Take a look at some of my projects, and feel free to send me 
             a message!
-          </p>
+          </ShadowedP>
           <SmallSpacer />
         </Intro>
         </VerticalContainer>
       </HorizontalContainer>
-        <Spacer />
+      <ContactComponent />
+      <Navbar aboutRef={wrapperRef} />
     </WelcomeWrapper>
   );
 }

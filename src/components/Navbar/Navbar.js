@@ -22,7 +22,7 @@ bottom: 0;
 margin-bottom: 8px;
 `
 
-const NavButton = styled(Link)`
+const NavLink = styled(Link)`
   display: flex;
   background: transparent;
   border-radius: 3px;
@@ -40,13 +40,37 @@ const NavButton = styled(Link)`
   }
 `;
 
-function Navbar() {
+const NavButton = styled.button`
+  display: flex;
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid #bf4f74;
+  color: #bf4f74;
+  margin: 0 1em;
+  padding: 0.25em 1.5em;
+  &:hover {
+    color: gold;
+    border-color: gold;
+  }
+  &:active {
+    color: white;
+    border-color: white;
+  }
+`;
+
+function Navbar({ aboutRef }) {
   return (
     <NavWrapper>
       <NavContainer>
-        <NavButton href="/" className="navbutton">Home</NavButton>
-        <NavButton href="/about" className="navbutton">About me</NavButton>
-        <NavButton href="/contact" className="navbutton">Contact me</NavButton>
+        <NavButton className="navbutton" onClick={() => {
+          window.scrollTo(0, 0)}}
+          >Home</NavButton>
+        <NavButton className="navbutton" onClick={() => {
+          aboutRef.current.scrollIntoView()
+        }}>About me</NavButton>
+        <NavButton className="navbutton" onClick={() => {
+          window.scrollTo(0, 9000)
+        }}>Contact me</NavButton>
       </NavContainer>
     </NavWrapper>
   );
