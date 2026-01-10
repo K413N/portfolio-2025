@@ -1,6 +1,6 @@
 
 export async function getProjectInfo(projectId) {
-    return PROJECT_DATA(projectId)
+    return PROJECT_DATA[projectId]
 }
 
 const PROJECT_DATA = {
