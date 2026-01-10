@@ -119,7 +119,7 @@ const ContactComponent = () => {
 
   return (
     <ContactWrapper>
-        <ContactHeader>Contact Form</ContactHeader>
+        <ContactHeader>Contact Me!</ContactHeader>
         <ContactForm onSubmit={handleSubmit}>
             <FormWrapper>
                 <div>

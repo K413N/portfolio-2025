@@ -15,6 +15,8 @@ const NavContainer = styled.div`
   outline: solid;
   outline-width: 2px;
   border-radius: 32px;
+  height: 60px;
+  width: 600px;
 `
 const NavWrapper = styled.div`
 position: fixed;
@@ -24,6 +26,7 @@ margin-bottom: 8px;
 
 const NavLink = styled(Link)`
   display: flex;
+  align-items: center;
   background: transparent;
   border-radius: 3px;
   border: 2px solid #bf4f74;
@@ -42,6 +45,7 @@ const NavLink = styled(Link)`
 
 const NavButton = styled.button`
   display: flex;
+  align-items: center;
   background: transparent;
   border-radius: 3px;
   border: 2px solid #bf4f74;
@@ -71,6 +75,7 @@ function Navbar({ aboutRef }) {
         <NavButton className="navbutton" onClick={() => {
           window.scrollTo(0, 9000)
         }}>Contact me</NavButton>
+        <NavLink href="projects">Projects</NavLink>
       </NavContainer>
     </NavWrapper>
   );

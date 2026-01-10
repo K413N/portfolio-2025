@@ -168,7 +168,13 @@ function Welcome() {
         </Intro>
         </VerticalContainer>
       </HorizontalContainer>
+      <Spacer />
       <ContactComponent />
+      <SmallSpacer />
+      <SmallSpacer />
+      <SmallSpacer />
+      <SmallSpacer />
+      <SmallSpacer />
       <Navbar aboutRef={wrapperRef} />
     </WelcomeWrapper>
   );
