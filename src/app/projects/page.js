@@ -1,8 +1,12 @@
 import React from "react";
+import ProjectCarousel from "@/components/ProjectCarousel";
+import { getProjectInfo } from "./projects";
 
-function Projects () {
+async function Projects () {
     return(
-        <div>hello</div>
+        <div>
+            <ProjectCarousel />
+        </div>
     )
 }
 
