@@ -22,11 +22,20 @@ const NavLink = styled(Link)`
     width: 6em;
     background: blue;
     font-size: 3rem;
-    border-radius: .2em;
     text-align: center;
     align-content: center;
     position: relative;
     overflow: hidden;
+    border-radius: 32px;
+    border: 5px solid gray;
+    &:hover {
+    color: gold;
+    border-color: gold;
+    }
+    &:active {
+    color: white;
+    border-color: white;
+    }
 `
 
 const CardTitle = styled.div`
