@@ -2,6 +2,14 @@ export async function getProjectInfo(projectId) {
   return PROJECT_DATA[projectId];
 }
 
+export async function getAllProjects() {
+  return Object.entries(PROJECT_DATA).map(([id, data]) => ({
+    id,
+    ...data,
+  }));
+}
+
+
 const PROJECT_DATA = {
   beatclash: {
     name: "Beatclash",
@@ -13,7 +21,7 @@ const PROJECT_DATA = {
     videoPoster: "/images/beatclash-poster.jpg",
     role: "Solo Developer",
     timeline: "2024",
-    status: "In Development",
+    status: "Complete",
     tags: ["React", "MongoDB", "ReactPlayer", "Node.js", "Full Stack"],
     stats: [
       { value: "3", label: "Core Features" },
@@ -35,7 +43,7 @@ const PROJECT_DATA = {
       { name: "Node.js", color: "#8CC84B" },
     ],
     challenges:
-      "This was the final project at Corcordia Bootcamps. I had very little knowledge, and had to figure out literally everything about using React with a database in a 2 week time limit.",
+      "This was the final project at Corcordia Bootcamps. I had very little knowledge, and had to figure out everything about using React with a database in a 2 week time limit.",
     lessons:
       "This project gave me a much deeper understanding of full-stack data flow — from MongoDB to API routes to rendering dynamic content on the frontend. I also learned how important it is to plan your data models early. I also made the mistake of trying to touch APIs directly to play media. I was reading through the APIs of soundcloud, spotify, youtube, when all of a sudden I realised I didn't need any of that. I just installed React-Player and embedded it into my forumn posts so users can post any media it can pick up, and a player will show.",
     images: [],
@@ -138,7 +146,7 @@ const PROJECT_DATA = {
     role: "Solo Developer",
     timeline: "2023",
     status: "Complete",
-    tags: ["Unity", "C#", "Procedural Generation", "Perlin Noise", "Technical Demo"],
+    tags: ["Godot Engine", "GDScript", "Procedural Generation", "Technical Demo"],
     stats: [
       { value: "∞", label: "Unique Outputs" },
       { value: "3D", label: "Generation Space" },
@@ -164,3 +172,4 @@ const PROJECT_DATA = {
     ],
   },
 };
+

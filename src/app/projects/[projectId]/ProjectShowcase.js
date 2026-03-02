@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 
@@ -628,8 +629,32 @@ const DUMMY_IMAGES = [
    ======================== */
 
 function LightboxModal({ images, index, onClose, onNav }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onNav(-1);
+      if (e.key === "ArrowRight") onNav(1);
+    };
+
+    // Prevent background scrolling while lightbox is open
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose, onNav]);
+
+  if (!mounted) return null;
+
   const current = images[index];
-  return (
+
+  return createPortal(
     <LightboxOverlay onClick={onClose}>
       <LightboxImageWrapper onClick={(e) => e.stopPropagation()}>
         {current.src ? (
@@ -649,7 +674,8 @@ function LightboxModal({ images, index, onClose, onNav }) {
         <LightboxClose onClick={onClose}>✕</LightboxClose>
         <ImageCounter>{index + 1} / {images.length}</ImageCounter>
       </LightboxImageWrapper>
-    </LightboxOverlay>
+    </LightboxOverlay>,
+    document.body
   );
 }
 
@@ -788,7 +814,7 @@ function ProjectShowcase({ project }) {
                 <SectionLabel>Tech Stack</SectionLabel>
                 <StackGrid>
                   {project.techStack.map((tech) => (
-                    <StackItem key={tech.name} glowColor={tech.color}>
+                    <StackItem key={tech.name} >
                       <StackDot color={tech.color} />
                       {tech.name}
                     </StackItem>

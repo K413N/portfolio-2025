@@ -9,6 +9,7 @@ import './bgvidstyles.css';
 import ContactComponent from "@/components/ContactComponent/ContactComponent";
 import Navbar from "@/components/Navbar";
 import ProjectCarousel from "@/components/ProjectCarousel";
+import Link from "next/link";
 
 /* ───────── Animations ───────── */
 const fadeUp = keyframes`
@@ -329,7 +330,7 @@ function Welcome() {
       </AboutSection>
 
       <HeroOverlay ref={projectsRef}>
-        <h1>Projects</h1>
+        <Link href="/projects"><h1>Projects</h1></Link>
       </HeroOverlay>
       <ProjectCarousel />
 

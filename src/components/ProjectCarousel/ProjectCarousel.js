@@ -10,6 +10,8 @@ import gunbunniiThumbnail from './thumbnails/gunbunnii_thumbnail.png';
 import proceduralGenThumbnail from './thumbnails/procedural_gen_thumbnail.png';
 import proceduralNightmaresThumbnail from './thumbnails/procedural_nightmares_thumbnail.png';
 
+
+
 const projects = [
   { href: "projects/beatclash", thumbnail: beatclashThumbnail, title: "Beatclash" },
   { href: "projects/gunbunnii", thumbnail: gunbunniiThumbnail, title: "GunBunnii" },
