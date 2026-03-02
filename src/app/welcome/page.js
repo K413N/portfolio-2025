@@ -304,7 +304,7 @@ function Welcome() {
               course, Concordia Bootcamp's Full-Stack Web Development
               program, Josh Comeau's Joy of React, and have extensive
               experience with Godot Engine. I also use GNU/Linux as my
-              daily driver.
+              daily driver. (Arch on hyprland at the moment)
             </p>
           </GlassCard>
 
