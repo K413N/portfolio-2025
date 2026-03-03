@@ -1,23 +1,10 @@
 'use client'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-
-import beatclashThumbnail from './thumbnails/beatclash_thumbnail.png';
-import gunbunniiThumbnail from './thumbnails/gunbunnii_thumbnail.png';
-import proceduralGenThumbnail from './thumbnails/procedural_gen_thumbnail.png';
-import proceduralNightmaresThumbnail from './thumbnails/procedural_nightmares_thumbnail.png';
-
-
-
-const projects = [
-  { href: "projects/beatclash", thumbnail: beatclashThumbnail, title: "Beatclash" },
-  { href: "projects/gunbunnii", thumbnail: gunbunniiThumbnail, title: "GunBunnii" },
-  { href: "projects/procgen", thumbnail: proceduralGenThumbnail, title: "Proc Gen" },
-  { href: "projects/proceduralnightmares", thumbnail: proceduralNightmaresThumbnail, title: "Procedural Nightmares" },
-];
+import { getAllProjects } from "@/app/projects/projects";
 
 const NavLink = styled(Link)`
   display: flex;
@@ -111,28 +98,45 @@ const CardImage = styled(Image)`
 
 function ProjectCard({ project }) {
   return (
-    <NavLink href={project.href}>
+    <NavLink href={`/projects/${project.id}`}>
       <CardImage
-        src={project.thumbnail}
-        alt={`${project.title} project thumbnail`}
-        placeholder="blur"
+        src={`${project.thumbnail}`}
+        alt={`${project.name} project thumbnail`}
+        fill
+        sizes="(max-width: 768px) 100vw, 192px"
       />
-      <CardTitle>{project.title}</CardTitle>
+      <CardTitle>{project.name}</CardTitle>
     </NavLink>
   );
 }
 
 function ProjectCarousel() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const allProjects = await getAllProjects();
+      console.log("Fetched projects:", allProjects); // Add this line
+      setProjects(allProjects);
+    }
+    fetchProjects();
+  }, []);
+
+  if (projects.length === 0) {
+    return null;
+  }
+
   return (
     <section className="carousel" aria-label="Project showcase">
       <div className="group">
-        {projects.map((project) => (
-          <ProjectCard project={project} key={project.title} />
-        ))}
+        {projects.map((project) => {
+          console.log("Project thumbnail:", project.thumbnail); // Add this too
+          return <ProjectCard project={project} key={project.id} />;
+        })}
       </div>
       <div className="group" aria-hidden>
         {projects.map((project) => (
-          <ProjectCard project={project} key={`dup-${project.title}`} />
+          <ProjectCard project={project} key={`dup-${project.id}`} />
         ))}
       </div>
     </section>

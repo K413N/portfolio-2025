@@ -190,13 +190,25 @@ const CardLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 100%;       /* Add this to make link fill grid cell */
   animation: ${fadeUp} 0.5s ease both;
   animation-delay: ${({ index }) => index * 0.08}s;
+`;
+
+const CardBody = styled.div`
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Changed from center */
+  gap: 0.6rem;
+  height: 100%;       /* Fill available space */
 `;
 
 const Card = styled.article`
   display: grid;
   grid-template-columns: 200px 1fr;
+  min-height: 220px;  /* Add fixed minimum height */
+  height: 100%;       /* Make card fill the grid cell */
   background: linear-gradient(
     135deg,
     rgba(40, 80, 200, 0.07),
@@ -229,6 +241,7 @@ const Card = styled.article`
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    min-height: auto;  /* Allow flexible height on mobile */
   }
 `;
 
@@ -269,13 +282,7 @@ const ThumbnailOverlay = styled.div`
   }
 `;
 
-const CardBody = styled.div`
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.6rem;
-`;
+
 
 const CardTitle = styled.h2`
   font-size: 1.3rem;
@@ -291,9 +298,10 @@ const CardDescription = styled.p`
   color: rgba(200, 210, 240, 0.5);
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;  /* Changed from 3 to 2 for consistency */
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex-shrink: 0;         /* Prevent description from shrinking */
 `;
 
 const CardTags = styled.div`
@@ -301,6 +309,16 @@ const CardTags = styled.div`
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 0.3rem;
+  min-height: 52px;       /* Reserve space for 2 rows of tags */
+  align-content: flex-start;
+`;
+
+const CardFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;       /* This pushes footer to bottom */
+  padding-top: 0.5rem;
 `;
 
 const CardTag = styled.span`
@@ -328,14 +346,6 @@ const CardStatus = styled.span`
     if (status === 'Complete') return 'rgba(0, 200, 255, 0.2)';
     return 'rgba(255, 200, 0, 0.2)';
   }};
-`;
-
-const CardFooter = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 0.5rem;
 `;
 
 const ViewProject = styled.span`
@@ -408,7 +418,7 @@ function ProjectList({ projects }) {
                 {project.thumbnail ? (
                   <>
                     <Image
-                      src={projects.thumbnail}
+                      src={project.thumbnail}
                       alt={`${project.name} thumbnail`}
                       fill
                       style={{ objectFit: "cover" }}

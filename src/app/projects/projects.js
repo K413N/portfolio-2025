@@ -16,7 +16,7 @@ const PROJECT_DATA = {
     subtitle: "A community forum powered by react-player, and MongoDB",
     description:
       "Beatclash is a forum-style web application built around video sharing and discussion. Users can post content with embedded video playback powered by ReactPlayer, engage in threaded conversations, and build a community around shared interests. The backend runs on MongoDB for flexible document storage, handling user accounts, posts, comments, and media references.",
-    thumbnail: "assets/projects/thumbnails/beatclash_thumbnail.png",
+    thumbnail: "/assets/projects/images/thumbnails/beatclash_thumbnail.png",
     videoUrl: "/videos/beatclash-commentary.mp4",
     videoPoster: "/images/beatclash-poster.jpg",
     role: "Solo Developer",
@@ -58,7 +58,7 @@ const PROJECT_DATA = {
     subtitle: "A horror game built on procedural generation — my first published title",
     description:
       "Procedural Nightmares is a horror game where every playthrough generates a unique environment. The levels, item placements, and enemy encounters are all procedurally driven so no two runs feel the same. This was my first completed and publicly released game, published on itch.io.",
-    thumbnail: "assets/projects/thumbnails/procedural_nightmares_thumbnail.png",
+    thumbnail: "/assets/projects/images/thumbnails/procedural_nightmares_thumbnail.png",
     videoUrl: "/videos/proceduralnightmares-commentary.mp4",
     videoPoster: "/images/proceduralnightmares-poster.jpg",
     role: "Solo Developer",
@@ -98,7 +98,7 @@ const PROJECT_DATA = {
     subtitle: "A fast-paced first-person shooter in active development",
     description:
       "GunBunnii is an FPS built from the ground up with a focus on tight gunplay and responsive movement. The project is a deep dive into first-person mechanics — weapon systems, hit detection, player controllers, and level design all built in Godot Engine. It's currently in active development with core systems functional and content being added regularly.",
-    thumbnail: "assets/projects/thumbnails/gunbunnii_thumbnail.png",
+    thumbnail: "/assets/projects/images/thumbnails/gunbunnii_thumbnail.png",
     videoUrl: "/videos/gunbunnii-commentary.mp4",
     videoPoster: "/images/gunbunnii-poster.jpg",
     role: "Solo Developer",
@@ -140,7 +140,7 @@ const PROJECT_DATA = {
     subtitle: "A sandbox for learning and testing procedural generation techniques",
     description:
       "This project is a focused technical demo built to explore procedural generation from the ground up. It served as a learning sandbox where I could experiment with noise algorithms, terrain generation, and rule-based placement systems. The goal wasn't to ship a product but to deeply understand the systems that would later feed into larger projects like Procedural Nightmares.",
-    thumbnail: "assets/projects/thumbnails/procedural_gen_thumbnail.png",
+    thumbnail: "/assets/projects/images/thumbnails/procedural_gen_thumbnail.png",
     videoUrl: "/videos/procgen-commentary.mp4",
     videoPoster: "/images/procgen-poster.jpg",
     role: "Solo Developer",

@@ -2,8 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
 import BackgroundVideo from 'next-video/background-video';
-import bgvideo from '../../../assets/bgvideo.mp4';
-import bgimage from '../../../assets/cropped_photo.png';
+import bgvideo from '../../../public/assets/bgvideo.mp4';
+import bgimage from '../../../public/assets/cropped_photo.png';
 import Image from "next/image";
 import './bgvidstyles.css';
 import ContactComponent from "@/components/ContactComponent/ContactComponent";
