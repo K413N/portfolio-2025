@@ -230,18 +230,6 @@ const NavSpacer = styled.div`
   height: 80px;
 `;
 
-/* ───────── Bottom Spacer for Navbar ───────── */
-const ProjectLink = styled(Link)`
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 8px;
-  letter-spacing: -0.02em;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 /* ───────── Hook: useInView ───────── */
 function useInView(options = {}) {
   const ref = useRef(null);
@@ -344,9 +332,8 @@ function Welcome() {
       </AboutSection>
 
       <HeroOverlay ref={projectsRef}>
-        <ProjectLink href="/projects">Projects</ProjectLink>
+        <ProjectCarousel />
       </HeroOverlay>
-      <ProjectCarousel />
 
       {/* ── Contact ── */}
       <ContactSection>

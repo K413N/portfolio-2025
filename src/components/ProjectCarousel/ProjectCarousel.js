@@ -6,6 +6,42 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/app/projects/projects";
 
+const CarouselWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const HeaderLink = styled(Link)`
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+
+  &:hover {
+    color: rgba(0, 200, 255, 0.9);
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+  }
+
+  &::after {
+    content: '→';
+    font-size: 0.8em;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
 const NavLink = styled(Link)`
   display: flex;
   position: relative;
@@ -100,7 +136,7 @@ function ProjectCard({ project }) {
   return (
     <NavLink href={`/projects/${project.id}`}>
       <CardImage
-        src={`${project.thumbnail}`}
+        src={project.thumbnail}
         alt={`${project.name} project thumbnail`}
         fill
         sizes="(max-width: 768px) 100vw, 192px"
@@ -116,7 +152,6 @@ function ProjectCarousel() {
   useEffect(() => {
     async function fetchProjects() {
       const allProjects = await getAllProjects();
-      console.log("Fetched projects:", allProjects); // Add this line
       setProjects(allProjects);
     }
     fetchProjects();
@@ -127,19 +162,24 @@ function ProjectCarousel() {
   }
 
   return (
-    <section className="carousel" aria-label="Project showcase">
-      <div className="group">
-        {projects.map((project) => {
-          console.log("Project thumbnail:", project.thumbnail); // Add this too
-          return <ProjectCard project={project} key={project.id} />;
-        })}
-      </div>
-      <div className="group" aria-hidden>
-        {projects.map((project) => (
-          <ProjectCard project={project} key={`dup-${project.id}`} />
-        ))}
-      </div>
-    </section>
+    <CarouselWrapper>
+      <HeaderLink href="/projects">
+        Projects
+      </HeaderLink>
+      
+      <section className="carousel" aria-label="Project showcase">
+        <div className="group">
+          {projects.map((project) => (
+            <ProjectCard project={project} key={project.id} />
+          ))}
+        </div>
+        <div className="group" aria-hidden>
+          {projects.map((project) => (
+            <ProjectCard project={project} key={`dup-${project.id}`} />
+          ))}
+        </div>
+      </section>
+    </CarouselWrapper>
   );
 }
 
