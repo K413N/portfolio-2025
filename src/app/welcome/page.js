@@ -43,6 +43,7 @@ const PageWrapper = styled.div`
   background-color: #0a0a14;
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
 `;
 
 const HeroSection = styled.section`
@@ -55,6 +56,7 @@ const HeroSection = styled.section`
 `;
 
 const VidWrapper = styled.div`
+  width: 100%;
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -228,6 +230,18 @@ const NavSpacer = styled.div`
   height: 80px;
 `;
 
+/* ───────── Bottom Spacer for Navbar ───────── */
+const ProjectLink = styled(Link)`
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 /* ───────── Hook: useInView ───────── */
 function useInView(options = {}) {
   const ref = useRef(null);
@@ -330,7 +344,7 @@ function Welcome() {
       </AboutSection>
 
       <HeroOverlay ref={projectsRef}>
-        <Link href="/projects"><h1>Projects</h1></Link>
+        <ProjectLink href="/projects">Projects</ProjectLink>
       </HeroOverlay>
       <ProjectCarousel />
 
