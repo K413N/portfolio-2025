@@ -320,13 +320,17 @@ const Description = styled.p`
    FEATURES
    ======================== */
 
-const FeatureList = styled.ul`
+const FeatureGrid = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeatureItem = styled.li`
@@ -546,43 +550,6 @@ const ProjectLink = styled.a`
 `;
 
 /* ========================
-   TECH STACK
-   ======================== */
-
-const StackGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const StackItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  padding: 0.5em 0.9em;
-  font-size: 0.82rem;
-  color: rgba(200, 220, 255, 0.75);
-  background: rgba(60, 120, 255, 0.04);
-  border: 1px solid rgba(80, 140, 255, 0.1);
-  border-radius: 8px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    border-color: ${({ glowColor }) => glowColor || 'rgba(0, 200, 255, 0.3)'};
-    box-shadow: 0 0 12px ${({ glowColor }) => glowColor ? glowColor + '33' : 'rgba(0, 200, 255, 0.1)'};
-  }
-`;
-
-const StackDot = styled.span`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: ${({ color }) => color || 'rgba(0, 200, 255, 0.5)'};
-  box-shadow: 0 0 6px ${({ color }) => color || 'rgba(0, 200, 255, 0.3)'};
-  flex-shrink: 0;
-`;
-
-/* ========================
    STATS
    ======================== */
 
@@ -640,7 +607,6 @@ function LightboxModal({ images, index, onClose, onNav }) {
       if (e.key === "ArrowRight") onNav(1);
     };
 
-    // Prevent background scrolling while lightbox is open
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
@@ -794,35 +760,17 @@ function ProjectShowcase({ project }) {
         </Section>
       )}
 
-      {/* FEATURES + TECH */}
-      {(project.features?.length > 0 || project.techStack?.length > 0) && (
+      {/* FEATURES */}
+      {project.features?.length > 0 && (
         <Section>
-          <TwoColumn>
-            {project.features?.length > 0 && (
-              <GlassPanel>
-                <SectionLabel>Key Features</SectionLabel>
-                <FeatureList>
-                  {project.features.map((feature) => (
-                    <FeatureItem key={feature}>{feature}</FeatureItem>
-                  ))}
-                </FeatureList>
-              </GlassPanel>
-            )}
-
-            {project.techStack?.length > 0 && (
-              <GlassPanel>
-                <SectionLabel>Tech Stack</SectionLabel>
-                <StackGrid>
-                  {project.techStack.map((tech) => (
-                    <StackItem key={tech.name} >
-                      <StackDot color={tech.color} />
-                      {tech.name}
-                    </StackItem>
-                  ))}
-                </StackGrid>
-              </GlassPanel>
-            )}
-          </TwoColumn>
+          <GlassPanel>
+            <SectionLabel>Key Features</SectionLabel>
+            <FeatureGrid>
+              {project.features.map((feature) => (
+                <FeatureItem key={feature}>{feature}</FeatureItem>
+              ))}
+            </FeatureGrid>
+          </GlassPanel>
         </Section>
       )}
 

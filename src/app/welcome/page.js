@@ -320,6 +320,9 @@ function Welcome() {
               Take a look at some of my projects and feel free to send me a
               message!
             </p>
+            <p>
+              My main skills are the following: 
+            </p>
             <SkillsRow>
               {["React", "JavaScript", "Python", "GDScript", "Next.js", "Linux"].map(
                 (skill) => (

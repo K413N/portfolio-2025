@@ -190,25 +190,15 @@ const CardLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   display: block;
-  height: 100%;       /* Add this to make link fill grid cell */
+  height: 100%;
   animation: ${fadeUp} 0.5s ease both;
   animation-delay: ${({ index }) => index * 0.08}s;
 `;
 
-const CardBody = styled.div`
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;  /* Changed from center */
-  gap: 0.6rem;
-  height: 100%;       /* Fill available space */
-`;
-
 const Card = styled.article`
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  min-height: 220px;  /* Add fixed minimum height */
-  height: 100%;       /* Make card fill the grid cell */
+  position: relative;
+  min-height: 220px;
+  height: 100%;
   background: linear-gradient(
     135deg,
     rgba(40, 80, 200, 0.07),
@@ -240,16 +230,16 @@ const Card = styled.article`
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-    min-height: auto;  /* Allow flexible height on mobile */
+    min-height: auto;
   }
 `;
 
 const CardThumbnail = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 180px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 55%;
   overflow: hidden;
   background: linear-gradient(
     135deg,
@@ -258,7 +248,9 @@ const CardThumbnail = styled.div`
   );
 
   @media (max-width: 600px) {
-    min-height: 200px;
+    position: relative;
+    width: 100%;
+    height: 200px;
   }
 `;
 
@@ -267,8 +259,10 @@ const ThumbnailOverlay = styled.div`
   inset: 0;
   background: linear-gradient(
     90deg,
-    transparent 60%,
-    rgba(2, 0, 20, 0.6) 100%
+    transparent 0%,
+    transparent 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.7) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -276,13 +270,39 @@ const ThumbnailOverlay = styled.div`
   @media (max-width: 600px) {
     background: linear-gradient(
       180deg,
-      transparent 50%,
-      rgba(2, 0, 20, 0.6) 100%
+      transparent 30%,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(0, 0, 0, 0.8) 100%
     );
   }
 `;
 
+const CardBody = styled.div`
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  padding-left: calc(55% - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  height: 100%;
+  min-height: 220px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(64, 0, 255, 0.12) 30%,
+    rgb(27, 18, 55)  50%
+  );
 
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+    padding-left: 1.5rem;
+    min-height: auto;
+    background: rgba(20, 15, 35, 0.95);
+  }
+`;
 
 const CardTitle = styled.h2`
   font-size: 1.3rem;
@@ -298,10 +318,10 @@ const CardDescription = styled.p`
   color: rgba(200, 210, 240, 0.5);
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2;  /* Changed from 3 to 2 for consistency */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  flex-shrink: 0;         /* Prevent description from shrinking */
+  flex-shrink: 0;
 `;
 
 const CardTags = styled.div`
@@ -309,7 +329,7 @@ const CardTags = styled.div`
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 0.3rem;
-  min-height: 52px;       /* Reserve space for 2 rows of tags */
+  min-height: 52px;
   align-content: flex-start;
 `;
 
@@ -317,7 +337,7 @@ const CardFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;       /* This pushes footer to bottom */
+  margin-top: auto;
   padding-top: 0.5rem;
 `;
 
@@ -421,7 +441,7 @@ function ProjectList({ projects }) {
                       src={project.thumbnail}
                       alt={`${project.name} thumbnail`}
                       fill
-                      style={{ objectFit: "cover" }}
+                      style={{ objectFit: "cover", objectPosition: "left center" }}
                     />
                     <ThumbnailOverlay />
                   </>
