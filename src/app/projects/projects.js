@@ -1,3 +1,11 @@
+// Helper function to generate image paths with mixed extensions
+function generateImagePaths(projectName, extensions) {
+	return extensions.map((ext, i) => ({
+		src: `/assets/projects/images/screenshots/${projectName}/${projectName}${String(i + 1).padStart(2, '0')}.${ext}`,
+		alt: `${projectName} screenshot ${i + 1}`
+	}));
+}
+
 export async function getProjectInfo(projectId) {
 	return PROJECT_DATA[projectId];
 }
@@ -38,7 +46,7 @@ const PROJECT_DATA = {
 			"This was the final project at Corcordia Bootcamps. I had very little knowledge, and had to figure out everything about using React with a database in a 2 week time limit.",
 		lessons:
 			"This project gave me a much deeper understanding of full-stack data flow — from MongoDB to API routes to rendering dynamic content on the frontend. I also learned how important it is to plan your data models early. I also made the mistake of trying to touch APIs directly to play media. I was reading through the APIs of soundcloud, spotify, youtube, when all of a sudden I realised I didn't need any of that. I just installed React-Player and embedded it into my forumn posts so users can post any media it can pick up, and a player will show!",
-		images: [],
+		images: generateImagePaths('beatclash', ['gif', 'gif', 'gif', 'gif', 'gif']),
 		links: [
 			// { label: "Live Site", url: "https://beatclash.vercel.app" },
 			// { label: "Source Code", url: "https://github.com/you/beatclash" },
@@ -73,7 +81,7 @@ const PROJECT_DATA = {
 			"I had to figure out not only how to apply my procedural generation techniques to a 3D grid map, but also figure out how to generate navigation meshes to newly generated worlds.",
 		lessons:
 			"Shipping a game taught me more than any tutorial ever could. Scoping, polish, bug fixing under pressure, and actually hitting 'publish' are all skills you can only learn by doing. I also learned that playtesting with other people is non-negotiable — what feels obvious to you as the developer is completely invisible to a fresh player, and some people can go through the entire game and miss one of the core features! (The upgrade guy)",
-		images: [],
+		images: generateImagePaths('proceduralnightmares', ['png', 'png', 'png', 'png', 'png', 'png']),
 		links: [
 			{ label: "Play on itch.io", url: "https://kalengames.itch.io/procedural-nightmares" },
 		],
@@ -107,7 +115,7 @@ const PROJECT_DATA = {
 			"This project was my first dive into the deep-end. Every aspect I had to learn from scratch. On top of that I was keen on making my levels using trenchbroom, so I had to learn how to use that quake level editing software as well.",
 		lessons:
 			"Building an FPS from scratch taught me how much invisible work goes into games that feel 'simple'. Every system — aiming, recoil, ammo management, enemy reactions — is its own rabbit hole. I learned to prototype each system in isolation before integrating, which saved me from constantly breaking things when adding new features.",
-		images: [],
+		images: generateImagePaths('gunbunnii', ['png', 'png', 'png', 'png', 'png', 'png']),
 		links: [
 			// { label: "Devlog", url: "https://you.itch.io/gunbunnii/devlog" },
 			// { label: "Source Code", url: "https://github.com/you/gunbunnii" },
@@ -141,9 +149,45 @@ const PROJECT_DATA = {
 			"The challenge here was experimenting with how much randomness I could add before breaking things, How to do it without tanking performance, and finding what techniques worked for me personally.",
 		lessons:
 			"I also learned how valuable creating my own visual debugging tools are. Being able to see the real values overlaid on the generated output made it visually easier to understand what was going on. In the future I may make tools that look like this for other games for debugging purposes.",
-		images: [],
+		images: generateImagePaths('procgen', ['png', 'png', 'png', 'png', 'png', 'png']),
 		links: [
 			// { label: "Source Code", url: "https://github.com/you/procgen-demo" },
 		],
 	},
+
+	weaponcomplex: {
+		name: "Weapon Complex",
+		subtitle: "A fast-paced first-person shooter with advanced weapon and movement mechanics currently in development",
+		description:
+			"Weapon Complex is a unique experience that combines weapon generation, fluid movement, character customization, and npcs over multiplayer.",
+		thumbnail: "/assets/projects/images/thumbnails/weapon_complex_thumbnail.png",
+		videoUrl: "/videos/weaponcomplex-commentary.mp4",
+		videoPoster: "/images/weaponcomplex-poster.jpg",
+		role: "Solo Developer",
+		timeline: "2025 — Present",
+		status: "In Development",
+		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Trenchbroom", "Aseprite", "FPS", "3D", "Game Design"],
+		stats: [
+			{ value: "FPS", label: "Genre" },
+			{ value: "3D", label: "Perspective" },
+			{ value: "WIP", label: "Current Phase" },
+		],
+		features: [
+			"Custom first-person player controller based gold source movement.",
+			"Randomly generated weapon system with multiple gun types and parts.",
+			"Character customization.",
+			"Players, npcs, and physics sync over net.",
+			"Player inventory system using JSON.",
+		],
+		challenges:
+			"First attempt at multiplayer, and storing different types of data for weapons and character customization to be loaded over multiplayer.",
+		lessons:
+			"This was quite a good experience in data manipulation, loading things using JSON and syncing it over multiplayer was quite a challenge but also a useful tool to learn. I also learned a lot about advanced movement mechanics in the games I love while attempting this one.",
+		images: generateImagePaths('weaponcomplex', ['png', 'png', 'png', 'png', 'png', 'png']),
+		links: [
+			// { label: "Devlog", url: "https://you.itch.io/gunbunnii/devlog" },
+			// { label: "Source Code", url: "https://github.com/you/gunbunnii" },
+		],
+	},
+
 };
