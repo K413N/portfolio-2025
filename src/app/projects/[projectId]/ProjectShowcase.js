@@ -669,9 +669,8 @@ function ProjectShowcase({ project }) {
 
         {project.tags?.length > 0 && (
           <TagList>
-            {project.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
+            {[...new Set(project.tags)].map((tag) => (
+              <Tag key={tag}>{tag}</Tag>))}
           </TagList>
         )}
 

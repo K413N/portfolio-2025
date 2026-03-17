@@ -27,7 +27,7 @@ const PROJECT_DATA = {
 		videoUrl: "/videos/beatclash-commentary.mp4",
 		videoPoster: "/images/beatclash-poster.jpg",
 		role: "Solo Developer",
-		timeline: "2024",
+		timeline: "2022",
 		status: "Complete",
 		tags: ["React", "Next.js", "MongoDB", "ReactPlayer", "Node.js", "Full Stack"],
 		stats: [
@@ -62,7 +62,7 @@ const PROJECT_DATA = {
 		videoUrl: "/videos/proceduralnightmares-commentary.mp4",
 		videoPoster: "/images/proceduralnightmares-poster.jpg",
 		role: "Solo Developer",
-		timeline: "2023 — 2024",
+		timeline: "2025",
 		status: "Released",
 		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Horror", "Procedural Generation", "itch.io"],
 		stats: [
@@ -98,7 +98,7 @@ const PROJECT_DATA = {
 		role: "Solo Developer",
 		timeline: "2022 — Present",
 		status: "In Development",
-		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Trenchbroom", "Aseprite", "FPS", "3D", "Game Design"],
+		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Trenchbroom", "FPS", "3D", "Game Design"],
 		stats: [
 			{ value: "FPS", label: "Genre" },
 			{ value: "3D", label: "Perspective" },
@@ -131,7 +131,7 @@ const PROJECT_DATA = {
 		videoUrl: "/videos/procgen-commentary.mp4",
 		videoPoster: "/images/procgen-poster.jpg",
 		role: "Solo Developer",
-		timeline: "2023",
+		timeline: "2024",
 		status: "Complete",
 		tags: ["Godot Engine", "GDScript", "Procedural Generation", "Technical Demo"],
 		stats: [
@@ -166,7 +166,7 @@ const PROJECT_DATA = {
 		role: "Solo Developer",
 		timeline: "2025 — Present",
 		status: "In Development",
-		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Trenchbroom", "Aseprite", "FPS", "3D", "Game Design"],
+		tags: ["Godot Engine", "GDScript", "Blender", "Aseprite", "Trenchbroom", "FPS", "3D", "Game Design"],
 		stats: [
 			{ value: "FPS", label: "Genre" },
 			{ value: "3D", label: "Perspective" },
